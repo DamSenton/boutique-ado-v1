@@ -69,26 +69,26 @@ body {
     border: 1px solid black !important;
 }
 
-.bg-black{
+.bg-black {
     background: #000 !important;
 }
 
-.overlay{
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: white;
-    z-index: -1;
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
 }
 
-a.category-badge > span.badge:hover{
-    background: #212519 !important;
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
     color: #fff !important;
 }
 
-.btt-button{
+.btt-button {
     height: 42px;
     width: 42px;
     position: fixed;
@@ -98,23 +98,28 @@ a.category-badge > span.badge:hover{
 
 .btt-link,
 .update-link,
-.remove-item{
+.remove-item {
     cursor: pointer;
 }
 
-.message-container{
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
     position: fixed;
     top: 72px;
     right: 15px;
-    z-index: 9999999999;
-
+    z-index: 99999999999;
 }
 
-.custom-toast{
+.custom-toast {
     overflow: visible;
 }
 
-.toast-capper{
+.toast-capper {
     height: 2px;
 }
 
@@ -169,7 +174,6 @@ a.category-badge > span.badge:hover{
     overflow-y: auto;
 }
 
-
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -177,6 +181,60 @@ a.category-badge > span.badge:hover{
   .container {
     max-width: 80%;
   }
+}
+
+/* Allauth form formatting */
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem; /* mt-4 */
+    color: #6c757d; /* text-secondary */
+}
+
+.allauth-form-inner-content input {
+    border-color: #000;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #000;
+    border: 1px solid #000;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: #fff;
+    background-color: #222;
+    border-color: #222;
+}
+
+.allauth-form-inner-content a {
+	color: #17a2b8; /* text-info */
 }
 
 /* fixed top navbar only on medium and up */
@@ -194,14 +252,13 @@ a.category-badge > span.badge:hover{
     }
 }
 
-/* pad the top when the navbar is collapsed on mobile */
-
-@media (max-width: 991px){
-    .header-container{
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
         padding-top: 116px;
     }
-    
-    body{
+
+    body {
         height: calc(100vh - 116px);
     }
 }
