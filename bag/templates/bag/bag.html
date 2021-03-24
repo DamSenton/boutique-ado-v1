@@ -44,7 +44,11 @@
                     <tr>
 
                         <td class="p-3 w-25">
-                            <img src="{{ item.product.image.url }}" class="img-fluid rounded">
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt=" {{ item.product.name }}" class="img-fluid rounded">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}noimage.png" alt=" {{ item.product.name }}" class="img-fluid rounded">
+                            {% endif %}
                         </td>
 
                         <td class="py-3">
@@ -159,17 +163,17 @@
     })
 
     // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    $('.remove-item').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var size = $(this).data('product_size');
         var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'product_size': size };
 
         $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
+            .done(function () {
+                location.reload();
+            });
     })
 
 </script>
